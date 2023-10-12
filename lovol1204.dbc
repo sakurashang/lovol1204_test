@@ -1,0 +1,98 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: Steering_Wheel LOVOLCVT Air
+VAL_TABLE_ Steer_Angle_Value 2 "REV" 1 "FWD" ;
+VAL_TABLE_ Motor_Enable_Value 255 "not available" 254 "fault" 1 "enable" 0 "disalbe" ;
+VAL_TABLE_ Lift_Up_Order_Value 32 "Up" 0 "General_control_mode" ;
+VAL_TABLE_ PTO_Control_Order_Value 3 "Undefined" 2 "Abnormal" 1 "TurnOn" 0 "TurnOff" ;
+VAL_TABLE_ Shift_Control_Order_Value 2 "R" 1 "F" 0 "N" ;
+VAL_TABLE_ Control_Enable_Value 3 "Undefined" 2 "Abnormal" 1 "Enabled" 0 "NotEnabled" ;
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ Power_On_Signal : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 512 Message_id_200: 8 Air
+ SG_ Id200_Parameter_Set : 56|8@1- (1,0) [0|250] ""  Steering_Wheel
+ SG_ Id200_Maximum_Torque_Set : 48|8@1- (1,0) [0|100] ""  Steering_Wheel
+ SG_ Id200_Motor_Enable : 40|8@1- (1,0) [0|250] ""  Steering_Wheel
+ SG_ Id200_Parameter_Value : 32|8@1- (100,0) [0|250] ""  Steering_Wheel
+ SG_ Id200_Steer_Angle : 16|16@1+ (1,0) [0|65530] ""  Steering_Wheel
+ SG_ Id200_Motor_Speed : 0|16@1+ (1,0) [0|65530] ""  Steering_Wheel
+
+BO_ 2566888945 EHC: 8 Air
+ SG_ External_Control_Enable : 48|2@1+ (1,0) [0|0] ""  LOVOLCVT
+ SG_ Active_Damping_Button : 44|4@1+ (1,0) [0|0] ""  LOVOLCVT
+ SG_ Rocker_Switche : 40|4@1+ (1,0) [0|0] ""  LOVOLCVT
+ SG_ Hybrid_Potentiometer : 32|8@1+ (0.004,0) [0|250] ""  LOVOLCVT
+ SG_ Lowe_Speed_Limit_Potentiometer : 24|8@1+ (0.004,0) [0|250] ""  LOVOLCVT
+ SG_ Lift_Height_Limit_Potentiometer : 16|8@1+ (0.004,0) [0|250] ""  LOVOLCVT
+ SG_ Cultivate_Depth_Set : 0|16@1+ (0.001,0) [0|1000] ""  LOVOLCVT
+
+BO_ 2566848807 Message_id_0127: 8 Air
+ SG_ Lift_Up_Order : 0|8@1+ (1,0) [0|0] ""  LOVOLCVT
+
+BO_ 2365522417 NSC: 8 Air
+ SG_ RPM_Order : 32|16@1+ (0.125,0) [0|8191.875] ""  LOVOLCVT
+ SG_ PTO_Control_Order : 24|2@1+ (1,0) [0|0] ""  LOVOLCVT
+ SG_ Shift_Control_Order : 8|8@1+ (1,0) [0|2] ""  LOVOLCVT
+ SG_ Brake_Control_Enable : 4|2@1+ (1,0) [0|4] ""  LOVOLCVT
+ SG_ PTO_Control_Enable : 2|2@1+ (1,0) [0|4] ""  LOVOLCVT
+ SG_ Shift_Control_Enable : 0|2@1+ (1,0) [0|4] ""  LOVOLCVT
+ SG_ Engine_Control_Enable : 6|2@1+ (1,0) [0|4] ""  LOVOLCVT
+
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+CM_ BO_ 2365522417 "PTO���ơ�ʹ�ܡ��Լ��任ǰ��";
+CM_ SG_ 2365522417 RPM_Order "�������ֽ�";
+CM_ SG_ 2365522417 PTO_Control_Order "���ĸ��ֽڵ�1-2λ";
+CM_ SG_ 2365522417 Shift_Control_Order "�ڶ����ֽڵ�1-8λ";
+CM_ SG_ 2365522417 Brake_Control_Enable "��һ���ֽڵ�5-6λ";
+CM_ SG_ 2365522417 PTO_Control_Enable "��һ���ֽڵ�3-4λ";
+CM_ SG_ 2365522417 Shift_Control_Enable "��һ���ֽڵ�1-2λ";
+BA_DEF_ SG_  "Sig_Start_Value" INT 0 0;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "Sig_Start_Value" 0;
+BA_DEF_DEF_  "BusType" "CAN";
+VAL_ 512 Id200_Motor_Enable 255 "not available" 254 "fault" 1 "enable" 0 "disalbe" ;
+VAL_ 512 Id200_Steer_Angle 2 "REV" 1 "FWD" ;
+VAL_ 2566848807 Lift_Up_Order 32 "Up" 0 "General_control_mode" ;
+VAL_ 2365522417 PTO_Control_Order 3 "Undefined" 2 "Abnormal" 1 "TurnOn" 0 "TurnOff" ;
+VAL_ 2365522417 Shift_Control_Order 2 "R" 1 "F" 0 "N" ;
+VAL_ 2365522417 Brake_Control_Enable 3 "Undefined" 2 "Abnormal" 1 "Enabled" 0 "NotEnabled" ;
+VAL_ 2365522417 PTO_Control_Enable 3 "Undefined" 2 "Abnormal" 1 "Enabled" 0 "NotEnabled" ;
+VAL_ 2365522417 Shift_Control_Enable 3 "Undefined" 2 "Abnormal" 1 "Enabled" 0 "NotEnabled" ;
+
